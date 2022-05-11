@@ -68,6 +68,7 @@ export const global = StyleSheet.create({
 
     back: {
         position: "absolute",
+        zIndex: 100,
         left: 0,
         top: 40,
     },
