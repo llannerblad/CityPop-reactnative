@@ -62,7 +62,6 @@ export default function ResultsScreen ({navigation}: FuncProp) {
         fetchData(input); 
     }, []); 
 
-
     // Indicates that content is loading
     if (isLoading) {
         return (
