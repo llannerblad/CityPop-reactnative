@@ -26,6 +26,7 @@ export const SearchComponent = ({ onPress, title, input, setInput, placeholder }
                     <Text style={css.global.title2}>{title}</Text>
                 </View>
                 <TextInput
+                placeholderTextColor={"grey"}
                 style={css.global.input}
                 onChangeText={(text) => {
                     setInput(text); 
