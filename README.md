@@ -62,9 +62,8 @@ Scan the QR-code with your phone and open in the Expo Go App!
 ## Author
 Lee Lannerblad 
 ## Screenshot 
-![ScreenShot Image](/assets/screenshot.png "ScreenShot")
 
-
+![ScreenShot Image](/assets/example.png "ScreenShot")
 
  
  
