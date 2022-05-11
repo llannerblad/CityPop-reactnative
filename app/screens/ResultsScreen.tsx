@@ -41,7 +41,7 @@ export default function ResultsScreen ({navigation}: FuncProp) {
             const string = "city, village,..."; 
             const response = await geonames.search({name_equals: text});  
             
-            if(response.totalResultsCount === 0) {
+            if(response.totalResultsCount === 0 || (/\d/.test(text))) {
                 setIsValidCity(false); 
             }
             else if ((response.geonames[0].fclName === string) && 
@@ -74,7 +74,7 @@ export default function ResultsScreen ({navigation}: FuncProp) {
     else if (!isValidCity) {
         return (
             <SafeAreaView style={css.global.container}>
-                <Text style={css.global.title2}>Not a valid city!</Text>
+                <Text style={css.global.title1}>Not a valid city!</Text>
                 <CustomButton
                 text="Try Again"
                 backgroundColor={css.colors.button_bg}
@@ -90,7 +90,7 @@ export default function ResultsScreen ({navigation}: FuncProp) {
             icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
             onPress={() => navigation.navigate("Home")}
             />
-            <Text style={css.global.title2} >{CityName}</Text>
+            <Text style={css.global.title1} >{CityName}</Text>
             <View style={css.global.box}>
                 <Text style={css.global.description}>Population</Text>
                 <Text style={css.global.boxContent}> {population}</Text>
