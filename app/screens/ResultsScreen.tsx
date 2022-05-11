@@ -87,7 +87,7 @@ export default function ResultsScreen ({navigation}: FuncProp) {
         <SafeAreaView style={css.global.container}>
             <BackButton 
             text="CityPop" 
-            icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
+            icon={<Ionicons name="arrow-back" size={30} color={css.colors.button_bg} />}
             onPress={() => navigation.navigate("Home")}
             />
             <Text style={css.global.title1} >{CityName}</Text>

@@ -12,11 +12,10 @@ const BackButton = ({text, icon, onPress,}: Props) => {
     return (
         <TouchableOpacity onPress={onPress}
         style={css.global.back}>
-            <View>
-                <Text style={css.global.backButtonContent}>
-                {icon}{text}
-                </Text>
-            </View>
+            <Text style={css.global.backButtonContent}>
+                {icon}
+                <Text style={css.global.backButtonText}>{text}</Text>   
+            </Text>
         </TouchableOpacity>
     ); 
 }; 
