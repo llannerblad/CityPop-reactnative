@@ -21,7 +21,7 @@ interface Props {
 // When the TouchableOpacity is pressed onPress-function is called. 
 export const SearchComponent = ({ onPress, title, input, setInput, placeholder }: Props) => {
     return (
-        <View style={css.global.container}>
+        <View style={[css.global.container, css.global.transparent]}>
                 <View style={css.global.titleBox}>
                     <Text style={css.global.title2}>{title}</Text>
                 </View>
