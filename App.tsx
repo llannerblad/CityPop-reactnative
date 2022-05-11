@@ -28,11 +28,11 @@ export default function App() {
                   headerShown: false,
                 }}
             >
-              <Stack.Screen name="Home" component={HomeScreen}/>
-              <Stack.Screen name="City" component={CitySearch} />
-              <Stack.Screen name ="Country" component= {CountrySearch} />
-              <Stack.Screen name ="Result" component= {resultsScreen} />
-              <Stack.Screen name ="CityResults" component= {CityResults} />
+                <Stack.Screen name="Home" component={HomeScreen}/>
+                <Stack.Screen name="City" component={CitySearch} />
+                <Stack.Screen name ="Country" component= {CountrySearch} />
+                <Stack.Screen name ="Result" component= {resultsScreen} />
+                <Stack.Screen name ="CityResults" component= {CityResults} />
             </Stack.Navigator>
         </NavigationContainer>
     );
