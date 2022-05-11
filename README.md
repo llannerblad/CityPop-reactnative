@@ -7,20 +7,33 @@
  
  ## Technologies used
  
- Node version 16.14.2.
+ Node version 16.14.2
  
- npm version 8.5.0.
- 
- Typesscript version 4.3.5
+ Expo version 45.0.0
  
  ## Try it out!
  Clone the repository
- 
- Run the following command in the terminal
+ ```bash
+git clone https://github.com/llannerblad/CityPop-reactnative.git
+```
+ cd into the repository
+ ```bash
+cd CityPop-reactnative
+```
+
+ Run the following command to install dependencies
+ ```bash
+npm install
+```
+ Run the following command to start the app
+```bash
+npx expo start
+```
+or 
 ```bash
 npx npm start
 ```
-Scan the QR-code with your phone and open in the Expo Go App
+Scan the QR-code with your phone and open in the Expo Go App!
 
 ## Dependencies
 ```json
