@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRoute } from "@react-navigation/native"; 
 import {
-    View,
     Text,
     SafeAreaView,
     ActivityIndicator,
@@ -9,6 +8,8 @@ import {
 import * as css from "../../Styles";
 import Geonames from 'geonames.js'; /* es module */
 import CustomButton from "../components/CustomButton";
+import BackButton from "../components/BackButton"
+import { Ionicons } from "@expo/vector-icons";
 
 interface FuncProps {
     navigation: any,
@@ -39,23 +40,22 @@ export default function CityResults({navigation}: FuncProps) {
         navigation.navigate("Result", {input: input});
     }
 
-    // If the user input is valid, the api fetches the three biggest cities for the desired country.
-    // Otherwise the isValidCountry is set to false. 
+    // If the user input is valid, the api fetches the three biggest cities 
+    //for the desired country. Otherwise the isValidCountry is set to false. 
     async function fetchCities(text: any) {
         try {
             text = text.toLowerCase();
-            const countries = await geonames.search({q: text});  //get countryId
-
+            const countries = await geonames.search({q: text});  
+    
             if(countries.totalResultsCount === 0) {
                 setIsValidCountry(false); 
             }
             else if (countries.geonames[0].countryName.toLowerCase() === text) {
                 setIsValidCountry(true); 
-                const cities = await fetch(
-                    `http://api.geonames.org/searchJSON?country=${countries.geonames[0].countryCode}&maxRows=100&username=weknowit`);
-                const citiesJson = await cities.json();
+                const cities = await geonames.search({country: countries.geonames[0].countryCode});
                 const string = "city, village,..."; 
-                const arr= citiesJson.geonames.filter((d: { fclName: string | string[]; }) => d.fclName.includes(string)); 
+                const arr = cities.geonames.filter((d: { fclName: string | string[]; }) => 
+                    d.fclName.includes(string)); 
                 
                 arr.sort((a:any, b:any) => a.population < b.population ? 1 : -1 )
                 setCountryName(arr[0].countryName.toUpperCase()); 
@@ -86,42 +86,41 @@ export default function CityResults({navigation}: FuncProps) {
     else if (!isValidCountry){
         return(
         <SafeAreaView style={css.global.container}>
-            <View>{
-                <Text style={css.global.title2}>Not A Valid Country!</Text>}
-            </View>
+                <Text style={css.global.title2}>Not A Valid Country!</Text>
                 <CustomButton
-                    text="New search"
-                    backgroundColor={css.colors.button_bg}
-                    onPress={() => navigation.navigate("City")}
+                text="New search"
+                backgroundColor={css.colors.button_bg}
+                onPress={() => navigation.navigate("Country")}
                 />
         </SafeAreaView>
         );
     }   else {
         return (
             <SafeAreaView style={css.global.container}>
-                <View>
-                    <Text style={css.global.title2} >{countryName}</Text>
-                </View>
-                    <CustomButton
-                        text={citiesList[0]}
-                        backgroundColor={css.colors.button_bg}
-                        onPress={() =>  search(input)}
-                        onPressIn={() => setInput(citiesList[0])}
-                    />
-                    
-                    <CustomButton
-                        text={citiesList[1]}
-                        backgroundColor={css.colors.button_bg}
-                        onPress={() =>  search(input)}
-                        onPressIn={() => setInput(citiesList[1])}
-                    />
-
-                    <CustomButton
-                        text={citiesList[2]}
-                        backgroundColor={css.colors.button_bg}
-                        onPress={() =>  search(input)}
-                        onPressIn={() => setInput(citiesList[2])}
-                    />
+                <BackButton 
+                text="CityPop" 
+                icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
+                onPress={() => navigation.navigate("Home")}
+                />
+                <Text style={css.global.title2} >{countryName}</Text>
+                <CustomButton
+                text={citiesList[0]}
+                backgroundColor={css.colors.button_bg}
+                onPress={() =>  search(input)}
+                onPressIn={() => setInput(citiesList[0])}
+                />                  
+                <CustomButton
+                text={citiesList[1]}
+                backgroundColor={css.colors.button_bg}
+                onPress={() =>  search(input)}
+                onPressIn={() => setInput(citiesList[1])}
+                />
+                <CustomButton
+                text={citiesList[2]}
+                backgroundColor={css.colors.button_bg}
+                onPress={() =>  search(input)}
+                onPressIn={() => setInput(citiesList[2])}
+                />
             </SafeAreaView>
         ); 
     }
