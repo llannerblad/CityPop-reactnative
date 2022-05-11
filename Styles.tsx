@@ -9,6 +9,7 @@ export const colors = {
 
 export const global = StyleSheet.create({
     container: {
+        position: "relative",
         flex: 1,
         alignItems: "center",
         backgroundColor: colors.background_color,
@@ -17,10 +18,11 @@ export const global = StyleSheet.create({
     backButtonContent: {
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         color: colors.text_light,
         fontSize: 22,
-        margin: "0 auto",
     },
+
     titleBox: {
         width: "60%", 
         textAlign: "center",
@@ -31,8 +33,8 @@ export const global = StyleSheet.create({
     title1: {
         fontSize: 32,
         color: colors.text_light,
-        marginBottom: "10%",
-        marginTop: "10%",
+        marginBottom: 60,
+        marginTop: 150,
         fontWeight: 'bold',
     },
     
@@ -40,8 +42,8 @@ export const global = StyleSheet.create({
         textAlign: "center",
         fontSize: 32,
         color: colors.text_light,
-        marginBottom: "10%",
-        marginTop: "10%",
+        marginBottom: 40,
+        marginTop: 40,
         fontWeight: 'bold',
     },
 
@@ -51,7 +53,7 @@ export const global = StyleSheet.create({
 
     input: {
         width: 340,
-        height: "9%",
+        height: 60,
         padding: 15,
         borderColor: colors.text_light,
         borderWidth: 1,
@@ -60,9 +62,14 @@ export const global = StyleSheet.create({
         color: colors.text_light,
         },
 
+    transparent: {
+        backgroundColor: "transparent",
+    },
+
     back: {
         position: "absolute",
         left: 0,
+        top: 40,
     },
 
     box: {
