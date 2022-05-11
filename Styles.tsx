@@ -15,12 +15,18 @@ export const global = StyleSheet.create({
         backgroundColor: colors.background_color,
     },
 
+    backButtonText: {
+        marginBottom: 0,
+    },
+
     backButtonContent: {
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "row",
+        alignItems:"center",
+        textAlign: "center",
+        textAlignVertical: "center",
         color: colors.text_light,
-        fontSize: 22,
+        fontSize: 24,
     },
 
     titleBox: {
@@ -71,15 +77,16 @@ export const global = StyleSheet.create({
         zIndex: 100,
         left: 0,
         top: 40,
+        alignItems: "center",
     },
 
     box: {
-        width: '90%',
-        borderColor: 'rgba(0, 0, 0, 0.2)',
+        width: "90%",
+        borderColor: "rgba(0, 0, 0, 0.2)",
         borderWidth: 1,
         borderRadius: 5,
         marginBottom: 20,
-        alignItems: 'center',
+        alignItems: "center",
         backgroundColor: colors.button_bg,
         color: colors.text_light,
         maxWidth: 340,
@@ -102,7 +109,7 @@ export const global = StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: colors.text_light,
-        textAlign: 'center',
+        textAlign: "center",
         flexDirection: "row",
 
     },
@@ -110,16 +117,16 @@ export const global = StyleSheet.create({
     buttonContainer: {
         backgroundColor: "rebeccapurple",
         height: "10%",
-        width:'90%', 
+        width:"90%", 
         margin: 2,
-        alignSelf: 'center',
-        alignItems: 'center',
+        alignSelf: "center",
+        alignItems: "center",
         borderRadius: 6,
-        flexDirection: 'row',
+        flexDirection: "row",
         maxWidth: 340,
     },
 
     center: {
-        alignItems: 'center',
+        alignItems: "center",
     },
 });
