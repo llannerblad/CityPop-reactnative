@@ -85,7 +85,7 @@ export default function CityResults({navigation}: FuncProps) {
     else if (!isValidCountry){
         return(
         <SafeAreaView style={css.global.container}>
-                <Text style={css.global.title2}>Not A Valid Country!</Text>
+                <Text style={css.global.title1}>Not A Valid Country!</Text>
                 <CustomButton
                 text="New search"
                 backgroundColor={css.colors.button_bg}
@@ -101,7 +101,7 @@ export default function CityResults({navigation}: FuncProps) {
                 icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
                 onPress={() => navigation.navigate("Home")}
                 />
-                <Text style={css.global.title2} >{countryName}</Text>
+                <Text style={css.global.title1} >{countryName}</Text>
                 <CustomButton
                 text={citiesList[0]}
                 backgroundColor={css.colors.button_bg}
