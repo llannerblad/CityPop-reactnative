@@ -19,7 +19,6 @@ interface SearchProps {
     input: string; 
 }
 
-
 // Displays the three biggest cities for the searched country. If the country 
 //does not exist,a message is shown that suggests the user to do a new search. 
 export default function CityResults({navigation}: FuncProps) {
