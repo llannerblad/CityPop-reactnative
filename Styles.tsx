@@ -14,18 +14,25 @@ export const global = StyleSheet.create({
         backgroundColor: colors.background_color,
     },
 
+    backButtonContent: {
+        display: "flex",
+        alignItems: "center",
+        color: colors.text_light,
+        fontSize: 22,
+        margin: "0 auto",
+    },
     titleBox: {
-        width: "50%", 
+        width: "60%", 
         textAlign: "center",
         marginBottom: "10%",
-        marginTop: "8%",
+        marginTop: "30%",
     },
 
     title1: {
         fontSize: 32,
         color: colors.text_light,
-        marginBottom: "20%",
-        marginTop: "40%",
+        marginBottom: "10%",
+        marginTop: "10%",
         fontWeight: 'bold',
     },
     
@@ -33,8 +40,8 @@ export const global = StyleSheet.create({
         textAlign: "center",
         fontSize: 32,
         color: colors.text_light,
-        marginBottom: "20%",
-        marginTop: "30%",
+        marginBottom: "10%",
+        marginTop: "10%",
         fontWeight: 'bold',
     },
 
@@ -46,13 +53,17 @@ export const global = StyleSheet.create({
         width: 340,
         height: "9%",
         padding: 15,
-        //borderColor: 'rgba(0, 0, 0, 0.2)',
-        borderColor: "#f2f2f2",
+        borderColor: colors.text_light,
         borderWidth: 1,
         borderRadius: 5,
         marginBottom: 20,
         color: colors.text_light,
         },
+
+    back: {
+        position: "absolute",
+        left: 0,
+    },
 
     box: {
         width: '90%',
@@ -63,6 +74,7 @@ export const global = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: colors.button_bg,
         color: colors.text_light,
+        maxWidth: 340,
     },
 
 
@@ -70,6 +82,7 @@ export const global = StyleSheet.create({
         fontSize: 32,
         padding: 10, 
         color: colors.text_light,
+        
     },
 
     description: {
@@ -82,15 +95,11 @@ export const global = StyleSheet.create({
         fontSize: 20,
         color: colors.text_light,
         textAlign: 'center',
+        flexDirection: "row",
 
     },
 
     buttonContainer: {
-        shadowColor: "black",
-        shadowOpacity: 6,
-        elevation: 1,
-        shadowRadius: 30,
-        shadowOffset : { width: 1, height: 20},
         backgroundColor: "rebeccapurple",
         height: "10%",
         width:'90%', 
@@ -99,6 +108,7 @@ export const global = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 6,
         flexDirection: 'row',
+        maxWidth: 340,
     },
 
     center: {
