@@ -27,6 +27,7 @@ export default function CitySearch({navigation}: FuncProps) {
             icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
             onPress={() => navigation.navigate("Home")}
             />
+        
             <SearchComponent 
             title="SEARCH BY CITY"
             placeholder="Enter A City" 
