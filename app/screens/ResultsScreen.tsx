@@ -7,7 +7,10 @@ import {
     ActivityIndicator,
 } from "react-native";
 import * as css from "../../Styles";
+import Geonames from 'geonames.js'; /* es module */
 import CustomButton from "../components/CustomButton";
+import { Ionicons } from "@expo/vector-icons";
+import BackButton from "../components/BackButton"
 
 interface FuncProp {
     navigation: any; 
@@ -23,6 +26,11 @@ export default function ResultsScreen ({navigation}: FuncProp) {
     const [population, setPopulation] = useState();
     const route = useRoute();
     const input = route?.params?.input;
+    const geonames = Geonames({
+        username: 'weknowit',
+        lan: 'en',
+        encoding: 'JSON'
+    });
 
 
     // Checks if text matches any city in the api. If text is valid it fetches data and sets 
@@ -30,22 +38,18 @@ export default function ResultsScreen ({navigation}: FuncProp) {
     async function fetchData(text: any) {
         try {
             text = text.toLowerCase(); 
-            const response = await fetch(
-                `http://api.geonames.org/searchJSON?name_equals=${text}&maxRows=15&username=weknowit`
-            );
-            const json = await response.json();
             const string = "city, village,..."; 
-            console.log(json)
-
-            if(json.totalResultsCount === 0) {
+            const response = await geonames.search({name_equals: text});  
+            
+            if(response.totalResultsCount === 0) {
                 setIsValidCity(false); 
             }
-            else if ((json.geonames[0].fclName === string) &&
-                (json.geonames[0].population !== 0)
+            else if ((response.geonames[0].fclName === string) && 
+                (response.geonames[0].population !== 0)
             ) {
                 setIsValidCity(true);
-                setCityName(json.geonames[0].name.toUpperCase());
-                setPopulation(json.geonames[0].population); 
+                setCityName(response.geonames[0].name.toUpperCase());
+                setPopulation(response.geonames[0].population); 
             }
             } catch (error) {
             console.error(error);
@@ -71,22 +75,23 @@ export default function ResultsScreen ({navigation}: FuncProp) {
     else if (!isValidCity) {
         return (
             <SafeAreaView style={css.global.container}>
-            <View>{
-                <Text style={css.global.title2}>Not a valid city!</Text>}
-            </View>
+                <Text style={css.global.title2}>Not a valid city!</Text>
                 <CustomButton
-                    text="Try Again"
-                    backgroundColor={css.colors.button_bg}
-                    onPress={() => navigation.navigate("City")}/>
+                text="Try Again"
+                backgroundColor={css.colors.button_bg}
+                onPress={() => navigation.navigate("City")}/>
             </SafeAreaView>
         )
     }
     else {
     return (
         <SafeAreaView style={css.global.container}>
-            <View>{
-                <Text style={css.global.title2} >{CityName}</Text>}
-            </View>
+            <BackButton 
+            text="CityPop" 
+            icon={<Ionicons name="arrow-back" size={60} color={css.colors.button_bg} />}
+            onPress={() => navigation.navigate("Home")}
+            />
+            <Text style={css.global.title2} >{CityName}</Text>
             <View style={css.global.box}>
                 <Text style={css.global.description}>Population</Text>
                 <Text style={css.global.boxContent}> {population}</Text>
